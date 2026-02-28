@@ -194,6 +194,3 @@ Yeferson Heredia
 Ingeniería de Sistemas
 CORHUILA
 
-
-
-✅ Proyecto listo para entrega académica
