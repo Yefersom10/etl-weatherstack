@@ -194,12 +194,6 @@ Yeferson Heredia
 Ingeniería de Sistemas
 CORHUILA
 
-### 📌 Estado del Proyecto
 
-✅ ETL funcional
-
-✅ Base de datos integrada
-
-✅ Dashboards básico, interactivo y avanzado
 
 ✅ Proyecto listo para entrega académica
