@@ -116,24 +116,29 @@ Alembic (Migraciones)
 
 ## 📁 Estructura del Proyecto
 ```
-etl-weatherstack/
-│
-├── scripts/
-│   ├── extractor.py
-│   ├── transformador.py
-│   └── visualizador.py
-│
-├── models/
-│   └── registro_clima.py
-│
-├── dashboard_basic.py
-├── dashboard_interactive.py
-├── dashboard_advanced.py
+ETL-WEATHERSTACK/
 │
 ├── data/
+│   └── clima.csv
+│
 ├── logs/
-├── alembic/
+│   └── etl.log
+│
+├── scripts/
+│   ├── database.py
+│   ├── extractor.py
+│   ├── init_db.py
+│   ├── loader.py
+│   ├── models.py
+│   └── visualizador.py
+│
+├── clima-pitacho.db
+├── create_db.py
+├── dashboard_app.py
+├── dashboard_interactive.py
+├── dashboard_advanced.py
 ├── .env
+├── .gitignore
 ├── requirements.txt
 └── README.md
 ```
