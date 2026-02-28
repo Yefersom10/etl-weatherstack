@@ -1,24 +1,33 @@
-# ETL Weatherstack - Extracción de Datos de Clima
+# 🌦️ ETL Weatherstack - Pipeline Profesional con Dashboards
 
 Proyecto de Minería de Datos que implementa un pipeline ETL completo para 
-extraer, transformar y cargar datos de clima usando Weatherstack API.
+extraer, transformar, almacenar y visualizar datos climáticos usando la API de Weatherstack y PostgreSQL.
+
+---
 
 ## 🎯 Objetivo
 
-Aprender las 4 fases de un proceso ETL profesional:
-1. **Extract** - Obtener datos de APIs externas
-2. **Transform** - Procesar y normalizar datos
-3. **Load** - Almacenar en múltiples formatos
-4. **Visualize** - Analizar y presentar resultados
+Desarrollar un proceso ETL profesional que incluya:
+
+1. **Extract** → Obtención de datos desde API REST
+2. **Transform** → Limpieza y normalización con Pandas
+3. **Load** → Almacenamiento en PostgreSQL con SQLAlchemy
+4. **Analyze** → Consultas y análisis histórico
+5. **Visualize** → Dashboards interactivos con Streamlit
+
+---
 
 ## 🚀 Quick Start
 
-### Requisitos
+### 🔧 Requisitos
+
 - Python 3.11+
-- pip
+- PostgreSQL
 - Git
 
-### Instalación
+---
+
+## ⚙️ Instalación
 
 ```bash
 # Clonar repositorio
@@ -26,87 +35,166 @@ git clone https://github.com/tu_usuario/etl-weatherstack.git
 cd etl-weatherstack
 
 # Crear entorno virtual
-python3 -m venv venv
-source venv/bin/activate  # En Windows: .\venv\Scripts\Activate.ps1
+python -m venv venv
+
+# Activar entorno
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
 
 # Instalar dependencias
 pip install -r requirements.txt
-
-# Configurar API key
-echo "API_KEY=tu_api_key_aqui" > .env
 ```
+## 🔑 Configuración
 
-### Ejecutar el Pipeline
-
+Crear archivo .env en la raíz del proyecto:
+```bash
+API_KEY=tu_api_key_weatherstack
+DATABASE_URL=postgresql://usuario:password@localhost:5432/clima_db
+```
+### ▶️ Ejecutar ETL
 ```bash
 python scripts/extractor.py
 ```
+#### Esto realizará:
 
-## 📊 Salida del Pipeline
+- Extracción desde API
 
-El script genera:
-- `data/clima.csv` - Datos en formato CSV
-- `data/clima_raw.json` - Datos en formato JSON
-- `data/clima_analysis.png` - Gráficas de análisis
-- `logs/etl.log` - Registro de ejecución
+- Transformación con Pandas
+
+- Carga a PostgreSQL
+
+### Generación de logs
+
+📊 Ejecutar Dashboards
+
+📈 Dashboard Básico
+streamlit run dashboard_basic.py
+
+Incluye:
+
+- Métricas generales
+
+- Visualización simple
+
+- Resumen por ciudad
+
+## 🔎 Dashboard Interactivo
+```bash
+streamlit run dashboard_interactive.py
+```
+#### Incluye:
+
+- Filtro por rango de fechas
+
+- Selector dinámico
+
+- Gráficos interactivos con Plotly
+
+## 📊 Dashboard Avanzado
+```bash
+streamlit run dashboard_advanced.py
+```
+#### Incluye:
+
+- Análisis histórico en pestañas (Tabs)
+
+- Comparaciones temporales
+
+- Scatter: Temperatura vs Humedad
+
+- Métricas dinámicas
+
+## 🗄️ Base de Datos
+
+- PostgreSQL
+
+- SQLAlchemy (ORM)
+
+Alembic (Migraciones)
 
 ## 📁 Estructura del Proyecto
-
 ```
 etl-weatherstack/
+│
 ├── scripts/
-│   ├── extractor.py      # Extrae datos de la API
-│   ├── transformador.py  # Procesa los datos
-│   └── visualizador.py   # Genera gráficas
-├── data/                 # Salida (CSV, JSON, PNG)
-├── logs/                 # Registros de ejecución
-├── .env                  # Variables de entorno (no commitear)
-├── requirements.txt      # Dependencias Python
-└── README.md            # Este archivo
+│   ├── extractor.py
+│   ├── transformador.py
+│   └── visualizador.py
+│
+├── models/
+│   └── registro_clima.py
+│
+├── dashboard_basic.py
+├── dashboard_interactive.py
+├── dashboard_advanced.py
+│
+├── data/
+├── logs/
+├── alembic/
+├── .env
+├── requirements.txt
+└── README.md
 ```
+## 🛠️ Tecnologías Utilizadas
 
-## 🔑 Obtener API Key
+-  Python 3.11
 
-1. Ve a [weatherstack.com](https://weatherstack.com)
-2. Registrate y verifica tu email
-3. En el dashboard, copia tu Access Key
-4. Pega en `.env` como `API_KEY=tu_clave`
+- requests
 
-## 📚 Conceptos Aprendidos
+- pandas
 
-- **ETL Pipeline**: Ciclo de vida completo de datos
-- **APIs REST**: Consumir servicios web externos
-- **Python Avanzado**: Logging, manejo de errores, env vars
-- **Versionamiento**: Git y GitHub para colaboración
-- **Análisis de Datos**: Pandas, Matplotlib, Visualización
-- **Buenas Prácticas**: Docstring, type hints, testing
+- numpy
 
-## 🛠️ Tecnologías
+- matplotlib
 
-- Python 3.11
-- requests (HTTP client)
-- pandas (Data processing)
-- matplotlib (Visualization)
-- python-dotenv (Environment variables)
-- Git/GitHub (Version control)
+- plotly
 
-## 👨‍💻 Autor
+- streamlit
 
-Tu Nombre - Ingeniería de Sistemas - CORHUILA
+- python-dotenv
 
-## 📝 Licencia
+- psycopg2-binary
 
-Este proyecto está bajo licencia MIT - ver LICENSE.md
+- SQLAlchemy
 
-## 🤝 Contribuciones
+- Alembic
 
-Si deseas mejorar este proyecto:
-1. Haz fork del repositorio
-2. Crea una rama para tu mejora
-3. Commit tus cambios
-4. Push a la rama
-5. Abre un Pull Request
+- PostgreSQL
 
----
-**Última actualización:** Febrero 2026
-**Estado:** En desarrollo ✅
+- Git / GitHub
+
+## 📚 Conceptos Aplicados
+
+- Arquitectura ETL
+
+- Consumo de APIs REST
+
+- Modelado con ORM
+
+- Migraciones de base de datos
+
+- Dashboards interactivos
+
+- Manejo de errores y logging
+
+- Variables de entorno
+
+- Buenas prácticas en proyectos de datos
+
+👨‍💻 Autor
+
+Yeferson Heredia
+Ingeniería de Sistemas
+CORHUILA
+
+### 📌 Estado del Proyecto
+
+✅ ETL funcional
+
+✅ Base de datos integrada
+
+✅ Dashboards básico, interactivo y avanzado
+
+✅ Proyecto listo para entrega académica
