@@ -6,6 +6,7 @@ import pandas as pd
 from datetime import datetime
 from dotenv import load_dotenv
 from pathlib import Path
+from scripts.loader import guardar_datos_en_bd
 import logging
 
 # Cargar .env correctamente
@@ -93,15 +94,17 @@ class WeatherstackExtractor:
 
         return datos_extraidos
 
+
+
 if __name__ == "__main__":
     try:
         extractor = WeatherstackExtractor()
         datos = extractor.ejecutar_extraccion()
 
-        df = pd.DataFrame(datos)
-        df.to_csv('data/clima.csv', index=False)
+        if datos:
+            guardar_datos_en_bd(datos)
 
-        print(df)
+        print("Proceso ETL completado correctamente.")
 
     except Exception as e:
         logger.error(f"Error en extracción: {str(e)}")
